@@ -16,23 +16,28 @@ function myFunction() {
     }
 }
 
+const numberUserElem = document.getElementById("number-user");
+const numberComputerElem = document.getElementById("number-computer");
+const resultNumberElem = document.getElementById("result-number");
 
 document.getElementById("click-joke").addEventListener('click', function () {
 
-    let numberUser = document.getElementById("number-user");
-    let numberComputer = document.getElementById("number-computer");
-    let resultNumber = document.getElementById("result-number");
+    resultNumberElem.classList.remove("ms-bg-draw", "ms-bg-win", "ms-bg-lose")
 
-    numberUser.innerHTML = Math.floor(Math.random() * 6) + 1;
-    numberComputer.innerHTML = Math.floor(Math.random() * 6) + 1;
+    let numberUser = Math.floor(Math.random() * 6) + 1;
+    let numberComputer = Math.floor(Math.random() * 6) + 1;
 
-    if (numberUser > numberComputer) {
-        resultNumber.classList.add("ms-bg-win");
+    numberUserElem.innerHTML = numberUser;
+    numberComputerElem.innerHTML = numberComputer;
 
-    } else if (numberUser < numberComputer) {
-        resultNumber.classList.add("ms-bg-lose");
+    if (numberUser == numberComputer) {
+        resultNumberElem.classList.add("ms-bg-draw");
+
+    } else if (numberUser > numberComputer) {
+        resultNumberElem.classList.add("ms-bg-win");
 
     } else {
-        resultNumber.classList.add("ms-bg-draw");
+        resultNumberElem.classList.add("ms-bg-lose");
     }
+
 })
